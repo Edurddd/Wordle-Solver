@@ -5,8 +5,8 @@ fileName = "valid-wordle-words.txt"
 with open(fileName, 'r') as file:
     #Load word txt as list
     wordList = file.readlines()
-for word in wordList:
-    wordList[wordList.index(word)] = word.replace("\n", "")
+for i, word in enumerate(wordList):
+    wordList[i] = word.replace("\n", "")
         
 #Create hashmap of every letter, values being a 1x5 array where indecies represent position in word, and 0 = placeholder, x = gray, y= yellow= g = green
 letters = {chr(i + 96): [0 for i in range(5)] for i in range(1,27)}
@@ -93,4 +93,5 @@ for turn in range(6):
             guess = random.choice(wordList)
             print(f"Try: {guess}")
             updateLetters(guess)
+
             elimateWords()
